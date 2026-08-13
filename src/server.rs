@@ -59,7 +59,7 @@ pub struct HrisServer {
     pub store: Store,
 }
 
-#[tool_router(server_handler)]
+#[tool_router]
 impl HrisServer {
     #[tool(description = "List all employees, optionally filtered by department")]
     async fn list_employees(&self, Parameters(input): Parameters<DeptInput>) -> String {
@@ -227,4 +227,11 @@ impl HrisServer {
         }).collect();
         serde_json::to_string_pretty(&entries).unwrap()
     }
+}
+
+adk_mcp_sdk::mcp_2026_server! {
+    server: HrisServer,
+    task_tools: ["run_payroll"],
+    approval_tools: ["create_employee", "update_employee", "request_time_off", "approve_time_off", "run_payroll"],
+    cache_ttl_ms: 60_000,
 }

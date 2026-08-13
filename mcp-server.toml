@@ -1,79 +1,109 @@
-[server]
-id = "mcp_hris"
-display_name = "HRIS"
-version = "1.0.0"
-domain = "business-systems"
-risk_level = "medium"
+server_id = "mcp_hris"
+display_name = "Hris"
+version = "1.1.0"
+domain = "hris"
+sdk_version = "0.2.0"
+risk_level = "critical"
 writes_allowed = "gated"
 transports = ["stdio"]
 credentials = []
+governance_gates = ["mrtr_approval"]
+environments = ["development", "staging", "production"]
 
 [[tools]]
 name = "list_employees"
 description = "List all employees, optionally filtered by department"
 risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
 
 [[tools]]
 name = "get_employee"
 description = "Get employee details by ID"
 risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
 
 [[tools]]
 name = "create_employee"
 description = "Create a new employee record"
 risk_class = "internal_write"
+requires_approval = true
+credential_bindings = []
 
 [[tools]]
 name = "update_employee"
 description = "Update employee fields (title, department, manager, salary)"
 risk_class = "internal_write"
+requires_approval = true
+credential_bindings = []
 
 [[tools]]
 name = "list_departments"
 description = "List all departments"
 risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
 
 [[tools]]
 name = "get_department"
 description = "Get department details by ID"
 risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
 
 [[tools]]
 name = "request_time_off"
 description = "Request time off for an employee"
 risk_class = "internal_write"
+requires_approval = true
+credential_bindings = []
 
 [[tools]]
 name = "list_time_off"
-description = "List time-off requests"
+description = "List time-off requests, optionally for a specific employee"
 risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
 
 [[tools]]
 name = "approve_time_off"
 description = "Approve or deny a time-off request"
 risk_class = "internal_write"
+requires_approval = true
+credential_bindings = []
 
 [[tools]]
 name = "list_payroll"
-description = "List payroll records"
+description = "List payroll records, optionally filtered by period (e.g. 2026-04)"
 risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
 
 [[tools]]
 name = "run_payroll"
-description = "Run payroll for a period"
+description = "Run payroll for a period — generates pay records for all active employees"
 risk_class = "financial_action"
+requires_approval = true
+credential_bindings = []
 
 [[tools]]
 name = "get_org_chart"
 description = "Get the org chart as a tree structure"
 risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
 
 [[tools]]
 name = "get_headcount"
 description = "Get headcount summary by department"
 risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
 
 [[tools]]
 name = "get_directory"
 description = "Get employee directory (name, email, title, department)"
 risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
