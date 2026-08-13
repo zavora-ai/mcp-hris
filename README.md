@@ -138,7 +138,7 @@ The server starts with:
 ```toml
 server_id = "mcp_hris"
 display_name = "HRIS"
-version = "1.0.0"
+version = "1.1.0"
 domain = "business-systems"
 risk_level = "medium"
 writes_allowed = "gated"

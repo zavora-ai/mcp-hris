@@ -1,6 +1,6 @@
 server_id = "mcp_hris"
 display_name = "Hris"
-version = "1.0.0"
+version = "1.1.0"
 domain = "hris"
 sdk_version = "0.2.0"
 risk_level = "critical"
